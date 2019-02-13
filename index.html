@@ -59,6 +59,16 @@
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        L.control.locate({
+            keepCurrentZoomLevel: true,
+            follow: false,
+            stopFollowingOnDrag: true,
+            metric: true,
+            strings: {
+                title: "Find my Location",
+                outsideMapBoundsMsg: "You seem to be located outside the bounds of this MLS Region."
+            }
+        }).addTo(this.map);
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
